@@ -1,6 +1,6 @@
 # CSS4 COLORS
 
-Named colors based on CSS Color Module Level 4 [reticulas-cssframework][1]
+Generate classes based on named colors CSS Color Module Level 4 [reticulas-cssframework][1]
 
 
 ## Gulp tasks
