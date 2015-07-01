@@ -61,6 +61,18 @@
 .cyan {
   color: #00ffff;
 }
+.darkblue {
+  color: #00008b;
+}
+.darkcyan {
+  color: #008b8b;
+}
+.darkgoldenrod {
+  color: #b8860b;
+}
+.darkgray {
+  color: #a9a9a9;
+}
 .background-color-aliceblue {
   background-color: #f0f8ff;
 }
@@ -123,4 +135,16 @@
 }
 .background-color-cyan {
   background-color: #00ffff;
+}
+.background-color-darkblue {
+  background-color: #00008b;
+}
+.background-color-darkcyan {
+  background-color: #008b8b;
+}
+.background-color-darkgoldenrod {
+  background-color: #b8860b;
+}
+.background-color-darkgray {
+  background-color: #a9a9a9;
 }

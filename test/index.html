@@ -25,8 +25,30 @@
             }
             .page{
                 width: 100%;
-                max-width: 760px;
+                max-width: 460px;
                 margin: 1em auto;
+            }
+            a{
+                color: #999;
+            }
+            a:hover{
+                color: black;
+            }
+            nav,
+            header{
+                margin-bottom: 2em;
+            }
+            nav a{
+                margin-right: 1em;
+                text-decoration: none;
+                background-color: #999;
+                padding: .5em 1em;
+                color: white;
+            }
+            nav a:hover{
+                color: white;
+                text-decoration: none;
+                background-color: black;
             }
             .content{
                 display: flex;
@@ -35,7 +57,6 @@
             }
             ul{
                 width: 100%;
-                max-width: 50%;
                 margin: 0;
                 padding: 0;
                 list-style-type: none;
@@ -47,10 +68,15 @@
                 display: flex;
                 justify-content: space-between;
             }
+            #black,
+            #blue,
+            #blueviolet,
+            #darkblue {
+                color: #ccc;
+            }
             span{
                 text-align: right;
                 text-transform: uppercase;
-                color: #999;
             }
             li:first-child{
                 border-top: 1px solid #ccc;
@@ -84,9 +110,13 @@
     <div class="page">
         <header>
             <h1>CSS Color Module Level 4 palette</h1>
-            <p><a href="http://dev.w3.org/csswg/css-color/">http://dev.w3.org/csswg/css-color/</a></p>
+            <p><a href="http://dev.w3.org/csswg/css-color/#named-colors">http://dev.w3.org/csswg/css-color/#named-colors</a></p>
         </header>
+        <nav>
+            <a href="#" class="link-sort-list asc">A-Z</a> <a href="#" class="link-sort-list desc">Z-A</a>
+        </nav>
         <div class="content">
+            <!--
             <ul>
                 <li class="aliceblue">aliceblue <span>#f0f8ff</span></li>
                 <li class="antiquewhite">antiquewhite <span>#faebd7</span></li>
@@ -110,7 +140,6 @@
                 <li class="crimson">crimson <span>#dc143c</span></li>
                 <li class="cyan">cyan <span>#00ffff</span></li>
             </ul>
-            <!--
             <ul>
                 <li class="background-color-aliceblue">background-color-aliceblue</li>
                 <li class="background-color-antiquewhite">background-color-antiquewhite</li>
