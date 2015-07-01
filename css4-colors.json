@@ -1,6 +1,14 @@
 {
     "data": [{
         "type": "colors",
+        "id": "aliceblue",
+        "attributes": {
+            "color_name": "aliceblue",
+            "hex_rgb": "#f0f8ff",
+            "decimal": "240,248,255"
+        }
+    },{
+        "type": "colors",
         "id": "antiquewhite",
         "attributes": {
             "color_name": "antiquewhite",
