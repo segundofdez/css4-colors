@@ -17,7 +17,7 @@ $(document).ready(function() {
     });
 
     // A-Z  Z-A
-    $('.link-sort-list').click(function(e) {
+    $('.sort-name').click(function(e) {
         var $sort = this;
         var $list = $('#sort-list');
         var $listLi = $('li',$list);
@@ -35,5 +35,6 @@ $(document).ready(function() {
         });
         e.preventDefault();
     });
+
 
 });
