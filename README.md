@@ -1,7 +1,8 @@
 # CSS4 COLORS
 
-DEVELOPMENT -  Generate classes based on named colors [CSS Color Module Level 4 ][1]
+Named colors [CSS Color Module Level 4 ][1]
 
+> **Note:** This is in active development. Not ready yet.
 
 ## Gulp tasks
 
