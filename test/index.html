@@ -23,6 +23,11 @@
             body {
                 font-family: Sans-Serif;
                 margin: 0;
+                padding: 0;
+                background-color: #f0f0f0;
+            }
+            *{
+                box-sizing: border-box;
             }
             a{
                 color: #999;
@@ -30,13 +35,21 @@
             a:hover{
                 color: black;
             }
+            h1{
+                font-size: 2.5em;
+                margin-bottom: 0;
+            }
             nav,
             header{
-                margin-bottom: 2em;
                 width: 100%;
-                max-width: 460px;
-                margin: 1em auto;
-                padding:0  1em;
+                margin: 0em auto;
+                padding: 1em;
+                text-align: center;
+                background-color: #f5f5f5;
+                display: block;
+            }
+            nav{
+                padding-bottom: 2em;
             }
             nav a{
                 margin-right: 1em;
@@ -50,45 +63,55 @@
                 text-decoration: none;
                 background-color: black;
             }
-            #sort-list{
+            ul{
                 display: flex;
                 flex-flow: row wrap;
                 justify-content: center;
-                padding: 2em 0;
-            }
-            ul{
+                padding: 3em 0;
                 width: 100%;
                 margin: 0;
-                padding: 0;
                 list-style-type: none;
                 font-size: 0.875em;
             }
             li{
-                padding: 2em;
+                padding: 2em 1em;
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
                 margin: 1em;
-                width: 100%
+                width: 100%;
+                border: 5px solid white;
             }
-            @media (min-width: 740px){
+            @media (min-width: 800px){
                 li {
                     flex-grow: 1;
-                    max-width: 20%;
-                    flex-basis: 20%;
+                    max-width: 25%;
+                    flex-basis: 25%;
                 }
             }
             #black,
             #blue,
             #blueviolet,
+            #brown,
             #darkblue,
             #darkgreen,
+            #darkred,
+            #darkolivegreen,
             #darkmagenta,
+            #darkslateblue,
+            #darkslategray,
+            #darkslategrey,
+            #dimgray,
+            #dimgrey,
             #indigo,
             #maroon,
             #mediumblue,
             #midnightblue,
-            #navy {
-                color: #ccc;
+            #navy,
+            #purple,
+            #rebeccapurple,
+            #saddlebrown  {
+                color: #efefef;
             }
             span{
                 text-align: right;
@@ -127,8 +150,9 @@
     <!-- PAGE -->
     <div class="page">
         <header>
-            <h1>CSS Color Module Level 4 palette</h1>
-            <p><a href="http://dev.w3.org/csswg/css-color/#named-colors">http://dev.w3.org/csswg/css-color/#named-colors</a></p>
+            <h1>CSS4 Colors</h1>
+            <p>Explore CSS Color Module Level 4 named colors in another way</p>
+            <a href="http://dev.w3.org/csswg/css-color/#named-colors">http://dev.w3.org/csswg/css-color/#named-colors</a>
         </header>
         <nav>
             <a href="#" class="sort-name asc">A-Z</a> <a href="#" class="sort-name desc">Z-A</a>
