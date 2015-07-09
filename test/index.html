@@ -22,11 +22,7 @@
         <style>
             body {
                 font-family: Sans-Serif;
-            }
-            .page{
-                width: 100%;
-                max-width: 460px;
-                margin: 1em auto;
+                margin: 0;
             }
             a{
                 color: #999;
@@ -37,6 +33,10 @@
             nav,
             header{
                 margin-bottom: 2em;
+                width: 100%;
+                max-width: 460px;
+                margin: 1em auto;
+                padding:0  1em;
             }
             nav a{
                 margin-right: 1em;
@@ -50,10 +50,11 @@
                 text-decoration: none;
                 background-color: black;
             }
-            .content{
+            #sort-list{
                 display: flex;
-                flex-flow: row nowrap;
+                flex-flow: row wrap;
                 justify-content: center;
+                padding: 2em 0;
             }
             ul{
                 width: 100%;
@@ -63,10 +64,16 @@
                 font-size: 0.875em;
             }
             li{
-                padding: 1em;
-                border-bottom: 1px solid #ccc;
+                padding: 2em;
                 display: flex;
                 justify-content: space-between;
+                margin: 1em;
+                width: 100%
+            }
+            @media (min-width: 740px){
+                li {
+                    flex-basis: 20%;
+                }
             }
             #black,
             #blue,
@@ -85,9 +92,11 @@
                 text-align: right;
                 text-transform: uppercase;
             }
+            /*
             li:first-child{
                 border-top: 1px solid #ccc;
             }
+            */
         </style>
 
         <!-- Styles with Less js
@@ -123,7 +132,7 @@
             <a href="#" class="sort-name asc">A-Z</a> <a href="#" class="sort-name desc">Z-A</a>
         </nav>
         <div class="content">
-            
+
         </div>
     </div>
     <!-- /PAGE -->
