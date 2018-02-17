@@ -18,14 +18,14 @@ $(function() {
     // var valueE = 14;
     // var valueF = 15;
 
-    // fe=254(Red), fa=250(Green), fd=253(Blue)
-    // Calculando el valor decimal ( FE )
-    // 1 - Transformamos el primer numero en su equivalente en base 16 y lo multiplicaremos por 16.
-    // F = 15;
+    // fe = 254(Red), fa = 250(Green), fd = 253(Blue)
+    // Calculando el valor decimal ( fe )
+    // 1 - Transformamos el primer numero en su equivalente en base 16 multiplicandolo por 16.
+    // f = 15;
     // 15 * 16 = 240;
-    // 2 - El segundo dígito ( E ) representa las unidades.
-    // E = 14
-    // 3 - Sumamos las unidades (E) al valor obtenido:
+    // 2 - El segundo dígito ( e ) representa las unidades.
+    // e = 14
+    // 3 - Sumamos las unidades ( e ) al valor obtenido:
     // 240 + 14 = 254;
 
 
