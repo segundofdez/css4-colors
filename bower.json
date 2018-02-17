@@ -1,8 +1,6 @@
 {
     "name":"css4-colors",
     "dependencies": {
-        "html5shiv": "3.7.2",
-        "jQuery": "2.1.4",
-        "less": "2.5.1"
+        "jQuery": "^3.3.1"
     }
 }
