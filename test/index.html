@@ -24,7 +24,6 @@
                 font-family: Sans-Serif;
                 margin: 0;
                 padding: 0;
-                background-color: #f0f0f0;
             }
             *{
                 box-sizing: border-box;
@@ -70,23 +69,24 @@
                 list-style-type: none;
                 font-size: 0.875em;
                 margin: 0;
-                padding: 3em 0;
+                padding: 10px 0;
             }
             li{
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
                 width: 100%;
-                margin: 1em;
                 padding: 2em 1em;
-                border: 5px solid white;
+                border: 10px solid white;
             }
             @media (min-width: 800px){
                 li {
                     flex-grow: 1;
                     max-width: 25%;
                     flex-basis: 25%;
+                    text-align: center;
                 }
+                    li span {
+                        display: block;
+                        margin-top: 1em;
+                    }
             }
             #black,
             #blue,
@@ -111,10 +111,6 @@
             #rebeccapurple,
             #saddlebrown  {
                 color: #efefef;
-            }
-            span{
-                text-align: right;
-                text-transform: uppercase;
             }
         </style>
     </head>

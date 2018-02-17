@@ -1,54 +1,48 @@
 $(function() {
 
-    var value0 = 0;
-    var value1 = 1;
-    var value2 = 2;
-    var value3 = 3;
-    var value4 = 4;
-    var value5 = 5;
-    var value6 = 6;
-    var value7 = 7;
-    var value8 = 8;
-    var value9 = 9;
+    // var value0 = 0;
+    // var value1 = 1;
+    // var value2 = 2;
+    // var value3 = 3;
+    // var value4 = 4;
+    // var value5 = 5;
+    // var value6 = 6;
+    // var value7 = 7;
+    // var value8 = 8;
+    // var value9 = 9;
 
-    var valueA = 10;
-    var valueB = 11;
-    var valueC = 12;
-    var valueD = 13;
-    var valueE = 14;
-    var valueF = 15;
+    // var valueA = 10;
+    // var valueB = 11;
+    // var valueC = 12;
+    // var valueD = 13;
+    // var valueE = 14;
+    // var valueF = 15;
 
     // fe=254(Red), fa=250(Green), fd=253(Blue)
     // Calculando el valor decimal ( FE )
     // 1 - Transformamos el primer numero en su equivalente en base 16 y lo multiplicaremos por 16.
-    // F=15;
-    // 15*16 = 240;
+    // F = 15;
+    // 15 * 16 = 240;
     // 2 - El segundo dígito ( E ) representa las unidades.
-    // Según la tabla de equivalencias E = 14
+    // E = 14
     // 3 - Sumamos las unidades (E) al valor obtenido:
-    // 240+14=254;
+    // 240 + 14 = 254;
 
 
-    var redArrayDec = [];
 
     $.getJSON( "../css4-colors.json", function( data ) {
         var items = [];
-        // var hexArrayfirst = [];
-        // var hexArraysecond = [];
+        var redArrayDec = [];
         for (var i = 0; i < 148; i++) {
             $.each( data, function( key, val ) {
-                items.push('<li id="' + val[i].id + '"class="background-color-' + val[i].id + '">' + val[i].attributes.color_name + ' <span>' + val[i].attributes.hex_rgb + ' | ' + val[i].attributes.decimal + '</span></li>');
-                // hexArrayfirst.push(val[i].attributes.hex_rgb.charAt(1));
-                // hexArraysecond.push(val[i].attributes.hex_rgb.substr(1,2));
+                items.push('<li id="' + val[i].id + '"' + 'class="background-color-' + val[i].id + '">' + val[i].attributes.color_name + ' <span>' + val[i].attributes.hex_rgb + ' | ' + val[i].attributes.decimal + '</span></li>');
 
                 redArrayDec.push(val[i].attributes.decimal.substr(0, val[i].attributes.decimal.indexOf(',')));
             });
         }
-        // console.log(hexArrayfirst);
-        // console.log(hexArraysecond);
 
         $( "<ul/>", {
-            "id": "sort-list",
+            "id": "js-color-list",
             html: items.join( "" )
         }).appendTo( ".content" );
 
@@ -58,7 +52,7 @@ $(function() {
     // A-Z  Z-A
     $('.sort-name').click(function(e) {
         var $sort = this;
-        var $list = $('#sort-list');
+        var $list = $('#js-color-list');
         var $listLi = $('li',$list);
         $listLi.sort(function(a, b){
             var keyA = $(a).text();
