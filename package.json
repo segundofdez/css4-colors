@@ -1,6 +1,25 @@
 {
+  "name": "css4-colors",
+  "version": "0.1.0",
+  "description": "Explore CSS Color Module Level 4 named colors in another way",
+  "main": "css4-colors.less",
+  "author": "Segundo Fdez (http://segundofdez.com/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/segundofdez/css4-colors"
+  },
+  "keywords": [
+    "less",
+    "css4 colors",
+    "w3c"
+  ],
+  "bugs": {
+    "url": "https://github.com/segundofdez/css4-colors/issues"
+  },
+  "homepage": "https://github.com/segundofdez/css4-colors",
   "devDependencies": {
-    "gulp": "^3.8.11",
-    "gulp-less": "^3.0.3"
+    "gulp": "^3.9.0",
+    "gulp-less": "^3.0.5"
   }
 }
