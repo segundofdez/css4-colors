@@ -10,15 +10,11 @@
         <!-- Mobile viewport -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Favicon 32x32px -->
         <link rel="shortcut icon" href="favicon.ico">
 
-        <!-- Apple-touch-icon.png 182×182px-->
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-        <!-- Minified styles css with gulp -->
         <link rel="stylesheet" href="../dist/css4-colors.css">
-        <!-- /Minified styles with gulp -->
         <style>
             body {
                 font-family: Sans-Serif;
@@ -38,7 +34,6 @@
                 font-size: 2.5em;
                 margin-bottom: 0;
             }
-            nav,
             header{
                 width: 100%;
                 margin: 0em auto;
@@ -47,17 +42,17 @@
                 background-color: #f5f5f5;
                 display: block;
             }
-            nav{
-                padding-bottom: 2em;
-            }
-            nav a{
+            .options a{
                 margin-right: 1em;
                 text-decoration: none;
                 background-color: #999;
                 padding: .5em 1em;
                 color: white;
             }
-            nav a:hover{
+            .options .is-active {
+                background-color: black;
+            }
+            .options a:hover{
                 color: white;
                 text-decoration: none;
                 background-color: black;
@@ -67,20 +62,19 @@
                 flex-flow: row wrap;
                 justify-content: center;
                 list-style-type: none;
-                font-size: 0.875em;
+                font-size: 13px;
                 margin: 0;
-                padding: 10px;
+                padding: 1px;
             }
             li{
                 width: 100%;
                 padding: 2em 1em;
-                border: 10px solid white;
+                border: 1px solid white;
             }
             @media (min-width: 800px){
                 li {
                     flex-grow: 1;
-                    max-width: 25%;
-                    flex-basis: 25%;
+                    max-width: 12.5%;
                     text-align: center;
                 }
                     li span {
@@ -116,29 +110,25 @@
     </head>
 
     <body>
-    <!-- PAGE -->
     <div class="page">
         <header>
             <h1>CSS4 Colors</h1>
             <p>Explore CSS Color Module Level 4 named colors in another way</p>
             <a href="http://dev.w3.org/csswg/css-color/#named-colors">http://dev.w3.org/csswg/css-color/#named-colors</a>
         </header>
-        <nav>
-            <a href="#" class="sort-name asc">A-Z</a> <a href="#" class="sort-name desc">Z-A</a>
-            <a href="#" class="sort-red">Color Red</a>
-        </nav>
+        <ul class="options">
+            <li><a href="#" class="sort-name asc is-active">A-Z</a></li>
+            <li><a href="#" class="sort-name desc">Z-A</a></li>
+            <li><a href="#" class="sort-red">Color red</a></li>
+            <li><a href="#" class="sort-green">Color green</a></li>
+            <li><a href="#" class="sort-blue">Color blue</a></li>
+        </ul>
         <div class="content">
 
         </div>
     </div>
-    <!-- /PAGE -->
 
-    <!-- JS -->
     <script src="../bower_components/jQuery/dist/jquery.min.js"></script>
     <script src="js/main.js"></script>
-    <!--/JS -->
-
-    <!-- GOOGLE STATS  -->
-    <!-- /GOOGLE STATS  -->
     </body>
 </html>

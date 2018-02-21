@@ -28,56 +28,133 @@ $(function() {
     // 3 - Sumamos las unidades ( e ) al valor obtenido:
     // 240 + 14 = 254;
 
+    var responseData = [];
 
-
-    $.getJSON( "../css4-colors.json", function( data ) {
-        var items = [];
-        var redArrayDec = [];
-        for (var i = 0; i < 148; i++) {
-            $.each( data, function( key, val ) {
-                items.push('<li id="' + val[i].id + '"' + 'class="background-color-' + val[i].id + '">' + val[i].attributes.color_name + ' <span>' + val[i].attributes.hex_rgb + ' | ' + val[i].attributes.decimal + '</span></li>');
-
-                redArrayDec.push(val[i].attributes.decimal.substr(0, val[i].attributes.decimal.indexOf(',')));
-            });
+    // Get the json data and add rgb values to json
+    $.getJSON( "../css4-colors.json", function( response ) {
+        responseData = response.data;
+        for (let i = 0; i < responseData.length; i++) {
+            var rgb = responseData[i].attributes.decimal.split(',');
+            responseData[i].attributes.r  = parseInt(rgb[0]);
+            responseData[i].attributes.g  = parseInt(rgb[1]);
+            responseData[i].attributes.b  = parseInt(rgb[2]);
         }
+
+        drawColors();
+    });
+
+    // Sort A-Z
+    function sortAZ() {
+        function compare(a,b) {
+            if (a.id < b.id) return -1;
+            if (a.id > b.id) return 1;
+            return 0;
+        }
+
+        responseData.sort(compare);
+        drawColors();
+    }
+
+    // Sort Z-A
+    function sortZA() {
+        function compare(a,b) {
+            if (a.id > b.id) return -1;
+            if (a.id < b.id) return 1;
+            return 0;
+        }
+
+        responseData.sort(compare);
+        drawColors();
+    }
+
+    // Sort color with more amount of red
+    function sortColorRed() {
+        function compare(a,b) {
+            if (a.attributes.r > b.attributes.r) return -1;
+            if (a.attributes.r < b.attributes.r) return 1;
+            return 0;
+        }
+
+        responseData.sort(compare);
+        drawColors();
+    }
+
+    // Sort color with more amount of green
+    function sortColorGreen() {
+        function compare(a,b) {
+            if (a.attributes.g > b.attributes.g) return -1;
+            if (a.attributes.g < b.attributes.g) return 1;
+            return 0;
+        }
+
+        responseData.sort(compare);
+        drawColors();
+    }
+
+    // Sort color with more amount of blue
+    function sortColorBlue() {
+        function compare(a,b) {
+            if (a.attributes.b > b.attributes.b) return -1;
+            if (a.attributes.b < b.attributes.b) return 1;
+            return 0;
+        }
+
+        responseData.sort(compare);
+        drawColors();
+    }
+
+    // Add the color list
+    function drawColors() {
+        var items = [];
+
+        $.each( responseData, function( key, item ) {
+            items.push('<li id="' + item.id + '"' + 'class="background-color-' + item.id + '">' + item.attributes.color_name + ' <span>' + item.attributes.hex_rgb + ' | ' + item.attributes.decimal + '</span></li>');
+        });
+
+        $('.content').html('');
 
         $( "<ul/>", {
             "id": "js-color-list",
             html: items.join( "" )
         }).appendTo( ".content" );
+    }
 
-        console.log(redArrayDec);
-    });
 
-    // A-Z  Z-A
+    // Click events
     $('.sort-name').click(function(e) {
-        var $sort = this;
-        var $list = $('#js-color-list');
-        var $listLi = $('li',$list);
-        $listLi.sort(function(a, b){
-            var keyA = $(a).text();
-            var keyB = $(b).text();
-            if($($sort).hasClass('asc')){
-                return (keyA > keyB) ? 1 : 0;
-            } else {
-                return (keyA < keyB) ? 1 : 0;
-            }
-        });
-        $.each($listLi, function(index, row){
-            $list.append(row);
-        });
         e.preventDefault();
+        //console.log($(this).hasClass('asc'));
+        $('.options a').removeClass('is-active');
+        $(this).addClass('is-active');
+
+        if($(this).hasClass('asc')){
+            sortAZ();
+        } else {
+            sortZA();
+        }
     });
 
-    // Red Color
-    // $('.sort-red').click(function(e) {
-    //     redArrayDec.sort(function(a,b) {
-    //         if (isNaN(a) || isNaN(b)) {
-    //             return a > b ? 1 : -1;
-    //         }
-    //         return a - b;
-    //     });
-    //     e.preventDefault();
-    //     console.log(redArrayDec);
-    // });
+    $('.sort-red').click(function(e) {
+        e.preventDefault();
+        $('.options a').removeClass('is-active');
+        $(this).addClass('is-active');
+
+        sortColorRed();
+    });
+
+    $('.sort-green').click(function(e) {
+        e.preventDefault();
+        $('.options a').removeClass('is-active');
+        $(this).addClass('is-active');
+
+        sortColorGreen();
+    });
+
+    $('.sort-blue').click(function(e) {
+        e.preventDefault();
+        $('.options a').removeClass('is-active');
+        $(this).addClass('is-active');
+
+        sortColorBlue();
+    });
 });
