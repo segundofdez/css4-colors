@@ -39,7 +39,6 @@ $(function() {
             responseData[i].attributes.g  = parseInt(rgb[1]);
             responseData[i].attributes.b  = parseInt(rgb[2]);
         }
-
         drawColors();
     });
 
@@ -103,7 +102,72 @@ $(function() {
         drawColors();
     }
 
-    // Add the color list
+    // Sort color by rgb order amount
+    function sortRGB() {
+        function compare(a,b) {
+            if (a.attributes.r > b.attributes.r) return -1;
+            if (a.attributes.r < b.attributes.r) return 1;
+
+            if (a.attributes.g > b.attributes.g) return -1;
+            if (a.attributes.g < b.attributes.g) return 1;
+
+            if (a.attributes.b > b.attributes.b) return -1;
+            if (a.attributes.b < b.attributes.b) return 1;
+            return 0;
+        }
+
+        responseData.sort(compare);
+        drawColors();
+    }
+
+
+
+
+
+
+    // var rgbArr = [c1, c2, c3, ...]
+    // Each color is an array of three numbers between 0 and 255
+    // ci = [red, green, blue]
+
+    // function rgbToHsl(c) {
+    //     var r = c[0]/255, g = c[1]/255, b = c[2]/255;
+    //     var max = Math.max(r, g, b), min = Math.min(r, g, b);
+    //     var h, s, l = (max + min) / 2;
+
+    //     if (max == min) {
+    //         h = s = 0; // achromatic
+    //     } else {
+    //         var d = max - min;
+    //         s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    //         switch(max){
+    //             case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+    //             case g: h = (b - r) / d + 2; break;
+    //             case b: h = (r - g) / d + 4; break;
+    //         }
+    //         h /= 6;
+    //     }
+    //     return new Array(h * 360, s * 100, l * 100);
+    // }
+
+    // var sortRgbArr = rgbArr.map(function(c, i) {
+    //     // Convert to HSL and keep track of original indices
+    //     return {color: rgbToHsl(c), index: i};
+    //     }).sort(function(c1, c2) {
+    //     // Sort by hue
+    //     return c1.color[0] - c2.color[0];
+    //     }).map(function(data) {
+    //     // Retrieve original RGB color
+    //     return rgbArr[data.index];
+    // });
+
+    // console.log(rgbArr);
+
+
+
+
+
+
+    // Add the color list to .content
     function drawColors() {
         var items = [];
 
@@ -156,5 +220,13 @@ $(function() {
         $(this).addClass('is-active');
 
         sortColorBlue();
+    });
+
+    $('.sort-rgb').click(function(e) {
+        e.preventDefault();
+        $('.options a').removeClass('is-active');
+        $(this).addClass('is-active');
+
+        sortRGB();
     });
 });
