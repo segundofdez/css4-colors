@@ -29,16 +29,22 @@ $(function() {
     // 240 + 14 = 254;
 
     var responseData = [];
-
+    //var rgbArr = []
     // Get the json data and add rgb values to json
     $.getJSON( "../css4-colors.json", function( response ) {
         responseData = response.data;
+        //rgbArr = response.data;
         for (let i = 0; i < responseData.length; i++) {
             var rgb = responseData[i].attributes.decimal.split(',');
+            //var listrgb = rgbArr[i].attributes.decimal;
             responseData[i].attributes.r  = parseInt(rgb[0]);
             responseData[i].attributes.g  = parseInt(rgb[1]);
             responseData[i].attributes.b  = parseInt(rgb[2]);
+            //rgbArr[i] = parseInt(listrgb);
         }
+
+        //console.log(rgbArr);
+
         drawColors();
     });
 
@@ -105,14 +111,9 @@ $(function() {
     // Sort color by rgb order amount
     function sortRGB() {
         function compare(a,b) {
-            if (a.attributes.r > b.attributes.r) return -1;
-            if (a.attributes.r < b.attributes.r) return 1;
+            if (a.attributes.decimal > b.attributes.decimal) return -1;
+            if (a.attributes.decimal < b.attributes.decimal) return 1;
 
-            if (a.attributes.g > b.attributes.g) return -1;
-            if (a.attributes.g < b.attributes.g) return 1;
-
-            if (a.attributes.b > b.attributes.b) return -1;
-            if (a.attributes.b < b.attributes.b) return 1;
             return 0;
         }
 
@@ -160,7 +161,6 @@ $(function() {
     //     return rgbArr[data.index];
     // });
 
-    // console.log(rgbArr);
 
 
 
