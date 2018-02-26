@@ -29,6 +29,7 @@ $(function() {
     // 240 + 14 = 254;
 
     var responseData = [];
+    //var c = [];
     var rgbArr = [];
     // Get the json data and add rgb values to json
     $.getJSON( "../css4-colors.json", function( response ) {
@@ -37,20 +38,40 @@ $(function() {
         for (let i = 0; i < responseData.length; i++) {
             var rgb = responseData[i].attributes.decimal.split(',');
             //var listrgb = rgbArr[i].attributes.decimal;
-            responseData[i].attributes.r  = parseInt(rgb[0]);
-            responseData[i].attributes.g  = parseInt(rgb[1]);
-            responseData[i].attributes.b  = parseInt(rgb[2]);
+            responseData[i].attributes.r = parseInt(rgb[0]);
+            responseData[i].attributes.g = parseInt(rgb[1]);
+            responseData[i].attributes.b = parseInt(rgb[2]);
 
+           // var r = responseData[i].attributes.r;
+            var r = parseInt(rgb[0]);
+            var g = responseData[i].attributes.g;
+            var b = responseData[i].attributes.b;
+
+
+            //c["c" + i] = [r, g, b];
+            //c[i] = [r, g, b];
+
+            //c = ["c" + i];
+            //console.log(c);
+
+            // Array of values rgb grouping by 1 string
             //rgbArr[i] = rgb.join();
+            //rgbArr[i] = [r, g, b].join();
 
-            // Array of values by 3
-            rgbArr[i] = rgb;
+            // Array of values rgb grouping by 3 strings
+            //rgbArr[i] = rgb;
+
+            // Arrays of values rgb by number
+            rgbArr[i] = [r, g, b];
+
+            // Array for r values by number
+            //rgbArr[i] = r;
         }
-
-       console.log(rgbArr);
-
         drawColors();
     });
+    console.log(rgbArr);
+    //console.log(c);
+
 
     // Sort A-Z
     function sortAZ() {
@@ -115,18 +136,31 @@ $(function() {
     // Sort color by rgb order amount
     function sortRGB() {
         function compare(a,b) {
-
             //if (a.attributes.r > b.attributes.r && a.attributes.g > b.attributes.g && a.attributes.b > b.attributes.b) return -1;
             //if (a.attributes.r < b.attributes.r && a.attributes.g < b.attributes.g && a.attributes.b < b.attributes.b) return 1;
             if (a.attributes.decimal > b.attributes.decimal) return -1;
             if (a.attributes.decimal < b.attributes.decimal) return 1;
-
             return 0;
         }
         responseData.sort(compare);
         drawColors();
     }
 
+    // Add the color list to .content
+    function drawColors() {
+        var items = [];
+
+        $.each( responseData, function( key, item ) {
+            items.push('<li id="' + item.id + '"' + 'class="background-color-' + item.id + '">' + item.attributes.color_name + ' <span>' + item.attributes.hex_rgb + ' | ' + item.attributes.decimal + '</span></li>');
+        });
+
+        $('.content').html('');
+
+        $( "<ul/>", {
+            "id": "js-color-list",
+            html: items.join( "" )
+        }).appendTo( ".content" );
+    }
 
 
 
@@ -158,6 +192,7 @@ $(function() {
 
     // var sortRgbArr = rgbArr.map(function(c, i) {
     //     // Convert to HSL and keep track of original indices
+
     //     return {color: rgbToHsl(c), index: i};
     //     }).sort(function(c1, c2) {
     //     // Sort by hue
@@ -166,29 +201,11 @@ $(function() {
     //     // Retrieve original RGB color
     //     return rgbArr[data.index];
     // });
-    // console.log(sortRgbArr);
 
 
 
 
 
-
-
-    // Add the color list to .content
-    function drawColors() {
-        var items = [];
-
-        $.each( responseData, function( key, item ) {
-            items.push('<li id="' + item.id + '"' + 'class="background-color-' + item.id + '">' + item.attributes.color_name + ' <span>' + item.attributes.hex_rgb + ' | ' + item.attributes.decimal + '</span></li>');
-        });
-
-        $('.content').html('');
-
-        $( "<ul/>", {
-            "id": "js-color-list",
-            html: items.join( "" )
-        }).appendTo( ".content" );
-    }
 
 
     // Click events
@@ -235,5 +252,6 @@ $(function() {
         $(this).addClass('is-active');
 
         sortRGB();
+        //rgbToHsl();
     });
 });
