@@ -202,12 +202,6 @@ $(function() {
     //     return rgbArr[data.index];
     // });
 
-
-
-
-
-
-
     // Click events
     $('.sort-name').click(function(e) {
         e.preventDefault();
